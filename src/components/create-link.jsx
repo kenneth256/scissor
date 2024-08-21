@@ -62,7 +62,7 @@ export function CreateLink() {
     if (error === null && data) {
       navigate(`/link/${data[0].id}`);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [error, data]);
 
   const createNewLink = async () => {
@@ -105,7 +105,7 @@ export function CreateLink() {
 
         <Input
           id="title"
-          placeholder="Short Link's Title"
+          placeholder="Title"
           value={formValues.title}
           onChange={handleChange}
         />
@@ -118,7 +118,7 @@ export function CreateLink() {
         />
         {errors.longUrl && <Error message={errors.longUrl} />}
         <div className="flex items-center gap-2">
-          <Card className="p-2">scissor.in</Card> /
+          <Card className="p-2">scr.in</Card> /
           <Input
             id="customUrl"
             placeholder="Custom Link (optional)"

@@ -45,7 +45,7 @@ const Login = () => {
       fetchUser();
       navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [error, data]);
 
   const handleLogin = async () => {
@@ -76,9 +76,9 @@ const Login = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Login</CardTitle>
-        <CardDescription>
-          to your account if you already have one
+        <CardTitle className="flex justify-center items-center">Login</CardTitle>
+        <CardDescription className="flex justify-center items-center">
+         You must login to continue...
         </CardDescription>
         {error && <Error message={error.message} />}
       </CardHeader>
@@ -103,7 +103,7 @@ const Login = () => {
         {errors.password && <Error message={errors.password} />}
       </CardContent>
       <CardFooter>
-        <Button onClick={handleLogin}>
+        <Button onClick={handleLogin} className="w-full">
           {loading ? <BeatLoader size={10} color="#36d7b7" /> : "Login"}
         </Button>
       </CardFooter>

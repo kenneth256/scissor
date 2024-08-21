@@ -1,19 +1,21 @@
+
 import Login from "@/components/login";
 import Signup from "@/components/signup";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import {UrlState} from "@/context";
-import {useEffect} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { UrlState } from "@/context";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Auth() {
   let [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const {isAuthenticated, loading} = UrlState();
+  const { isAuthenticated, loading } = UrlState();
   const longLink = searchParams.get("createNew");
 
   useEffect(() => {
-    if (isAuthenticated && !loading)
+    if (isAuthenticated && !loading) {
       navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
+    }
   }, [isAuthenticated, loading, navigate]);
 
   return (
@@ -23,14 +25,20 @@ function Auth() {
           ? "Hold up! Let's login first.."
           : "Login / Signup"}
       </h1>
+      
+      {/* Tabs for Login and Signup */}
       <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Signup</TabsTrigger>
         </TabsList>
+
+        {/* Login Content */}
         <TabsContent value="login">
           <Login />
         </TabsContent>
+
+        {/* Signup Content */}
         <TabsContent value="signup">
           <Signup />
         </TabsContent>

@@ -80,9 +80,9 @@ const Signup = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Signup</CardTitle>
-        <CardDescription>
-          Create a new account if you haven&rsquo;t already
+        <CardTitle className="flex justify-center items-center">Signup</CardTitle>
+        <CardDescription className="flex justify-center items-center">
+          Create an account to continue...
         </CardDescription>
         {error && <Error message={error?.message} />}
       </CardHeader>
@@ -114,18 +114,19 @@ const Signup = () => {
           />
         </div>
         {errors.password && <Error message={errors.password} />}
-        <div className="space-y-1">
+        <div className="space-y-1 flex justify-center items-center">
           <input
             name="profile_pic"
             type="file"
             accept="image/*"
             onChange={handleInputChange}
+            className="space-y-1 flex justify-center items-center"
           />
         </div>
         {errors.profile_pic && <Error message={errors.profile_pic} />}
       </CardContent>
       <CardFooter>
-        <Button onClick={handleSignup}>
+        <Button onClick={handleSignup} className="w-full">
           {loading ? (
             <BeatLoader size={10} color="#36d7b7" />
           ) : (
